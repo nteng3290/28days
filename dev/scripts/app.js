@@ -6,28 +6,46 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      last: '',
+      last: moment().format(moment.HTML5_FMT.DATE),
       length: '5',
       cycle: '28',
       next: []
     }
+    // bind 'this' so I can use 'this' in the component
     this.dayChange = this.dayChange.bind(this);
+    this.calculateDate = this.calculateDate.bind(this);
   }
   dayChange(e) {
     // Handling the input
-    // e.preventDefault();
-    // e.target.id = "hey";
+    console.log('this is being handled');
     this.setState({
       [e.target.id]: e.target.value
     });
   }
-  calculateDate() {
+  calculateDate(e) {
+    // Submitting the form......
+    console.log(this.state);
+    e.preventDefault();
+    const date = this.state.last;
+    const length = this.state.length;
+
+    console.log(date);
+    console.log(length);
+
+    const theDate = moment(date).add(length, 'day').format('l');
+    
+    console.log(theDate);
+
+    // const newDate = this.setState({
+    //   last: moment(this.state.last).add(1, 'day')
+    // })
+    // console.log(newDate);
 
   }
   render() {
     // Rendering the inputs 
     return (
-      <form>
+      <form onSubmit={this.calculateDate}>
         <label htmlFor="last">1.When was your last period?</label>
         <input type="date" id="last" value={this.state.last} onChange={this.dayChange}/>
         <label htmlFor="length">2.How many days does your period typically last?</label>
