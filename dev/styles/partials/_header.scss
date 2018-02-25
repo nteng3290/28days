@@ -1,0 +1,98 @@
+header{
+    border-bottom: 2px solid $primary;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-around;
+    height: 100px;
+    padding: 20px 0;
+    // position: relative;
+}
+
+.user{
+    width:40px;
+    border: 1px solid transparent;
+}
+.title{
+    width: 100px;
+    height: 100px;
+    position: relative;
+}
+h1{
+    font-family: $headings;
+    font-size: 50px;
+    // width: 100px;
+    // padding: 10px;
+    // top:0;
+    bottom: 30px;
+    text-align: center;
+    // display: block;
+    position: absolute;
+    // margin: 10px 0;
+    &::before,
+    &::after{
+        content: "";
+        display: block;
+        position: absolute;
+        width: 30px;
+        height:5px;
+        border-top: 2px solid black;
+        border-bottom: 2px solid black;   
+    }
+    &::before{
+        left:-50px;
+        top:50px;
+    }
+    &::after{
+        right:-50px;
+        top:50px;
+    }
+}
+h3{
+    position: absolute;
+    // display: block;
+    // width:100px;
+    // top:0;
+    left: -10px;
+    // bottom:0;
+    font-size: 40px;
+    color: $primary;
+    text-align: center;
+    font-family: $headings;
+}
+
+.sidebar{
+    // display:none
+    // Just wondering why display none doesn't work? 
+    position: absolute;
+    top:-800px;
+    // bottom:0;
+    right: 0;
+    width: 33%;
+    height: calc(100vh - 100px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border-left: 3px dotted $primary;
+    // background: linear-gradient(skyblue,hotpink);
+    animation: slideDown 1s ease;
+    transition: all 0.5s ease-in-out;
+}
+.sidebar.show{
+    top:100px;
+    // bottom:0;
+}
+.closeButton{
+    position: absolute;
+    top:20px;
+    right:20px;
+    font-size: 30px;
+    .fa-times{
+        transition: all 0.5s ease-in-out;
+    }
+    .fa-times:hover{
+        transform: scale(1.2);
+    }
+}

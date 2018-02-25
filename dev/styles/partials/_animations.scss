@@ -1,0 +1,10 @@
+@keyframes slideDown{
+    0%{
+        display: none;
+        top:0;
+    }
+    100%{
+        display: block;
+        bottom:0;
+    }
+}
