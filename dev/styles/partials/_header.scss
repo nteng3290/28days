@@ -8,10 +8,9 @@ header{
     padding: 20px 0;
     // position: relative;
 }
-
-.user{
+.userSet{
     width:40px;
-    border: 1px solid transparent;
+    border: 2px solid transparent;
 }
 .title{
     width: 100px;
@@ -52,7 +51,7 @@ h3{
     position: absolute;
     // display: block;
     // width:100px;
-    // top:0;
+    top:8px;
     left: -10px;
     // bottom:0;
     font-size: 40px;
@@ -79,20 +78,37 @@ h3{
     // background: linear-gradient(skyblue,hotpink);
     animation: slideDown 1s ease;
     transition: all 0.8s ease-in-out;
+    h2{
+        text-transform: capitalize;
+        font-size: 30px;
+        font-family: $headings;
+    }
 }
 .sidebar.show{
     top:100px;
     // bottom:0;
 }
-.closeButton{
+.dropDown{
     position: absolute;
-    top:20px;
-    right:20px;
-    font-size: 30px;
-    .fa-times{
-        transition: all 0.5s ease-in-out;
+    top:0px;
+    left:-300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 100px;
+    background: white;    
+    z-index: 5;
+    transition: all 0.5s ease-in-out;
+    @media (max-width: 1200px) {
+        top:100px;
     }
-    .fa-times:hover{
-        transform: scale(1.2);
+}
+.dropDown.show{
+    position: absolute;
+    // top:100px;
+    left:0px;
+    @media (max-width: 1200px) {
+        top:100px;
     }
 }

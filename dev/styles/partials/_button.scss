@@ -2,11 +2,23 @@ button{
     background: none;
     width: 150px;
     padding:5px;
-    border: 1px solid grey;
+    border: 2px solid grey;
     transition: all 0.5s ease-in-out;
     &:hover{
         background: $primary;
         color: white;
-        border: 1px solid transparent;
+        border: 2px solid transparent;
+    }
+}
+.closeButton{
+    position: absolute;
+    top:20px;
+    right:20px;
+    font-size: 30px;
+    .fa-times{
+        transition: all 0.5s ease-in-out;
+    }
+    .fa-times:hover{
+        transform: scale(1.2);
     }
 }

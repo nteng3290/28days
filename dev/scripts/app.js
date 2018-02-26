@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import moment from 'moment';
+import UserLogin from './UserLogin';
+import Cycle from './Cycle';
 
 const config = {
   apiKey: "AIzaSyCoBmsRR0XSxq84y722qifzhkXr9Umhzz4",
@@ -17,6 +19,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
+      loggedIn: false,
       last: moment().format(moment.HTML5_FMT.DATE),
       length: '5',
       cycle: '28',
@@ -25,7 +28,6 @@ class App extends React.Component {
     // bind 'this' so I can use 'this' in the component
     this.dayChange = this.dayChange.bind(this);
     this.calculateDate = this.calculateDate.bind(this);
-    // this.countDown = this.countDown.bind(this);
     this.showSidebar = this.showSidebar.bind(this);
   }
   showSidebar(e) {
@@ -35,19 +37,33 @@ class App extends React.Component {
   componentDidMount(){
     // when it has been rendered in the page.... we are going to do something
     // when we get some sort of data when a value is received...
-    firebase.database().ref().on('value', (res) => {
-      console.log(res.val());
-      // since our data is coming back as an object we want to make it an array
-      const userData = res.val();
-      const dateArray =[];
-      for(let key in userData) {
-        userData[key].key = key;
-        dateArray.push(userData[key])
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        firebase.database().ref(`users/${user.uid}`).on('value', (res) => {
+          console.log(res.val());
+          // since our data is coming back as an object we want to make it an array
+          const userData = res.val();
+          const dateArray =[];
+          for(let key in userData) {
+            dateArray.push(userData[key])
+          }
+          console.log(dateArray);
+          
+          this.setState({
+            next: dateArray,
+            loggedIn: true,
+            user: user,
+          })
+        });
       }
-      this.setState({
-        next: dateArray
-      })
-    });
+      else{
+        this.setState({
+          next: [],
+          loggedIn: false,
+          user: {},
+        });
+      }
+    })
   }
   dayChange(e) {
     // Handling the input
@@ -57,7 +73,7 @@ class App extends React.Component {
   }
   calculateDate(e) {
     // Submitting the form......
-    console.log(this.state);
+    // console.log(this.state);
     e.preventDefault();
     const date = this.state.last;
     const length = this.state.length;
@@ -84,14 +100,13 @@ class App extends React.Component {
     // this.setState({
     //   next: newDate,
     // })
-    const dbRef = firebase.database().ref();
 
-    dbRef.push(newDate);
+    // const dbRef = firebase.database().ref();
+    const dbRef = firebase.database().ref(`users/${this.state.user.uid}`);
+
+    dbRef.set(newDate);
 
     this.showSidebar(e);
-
-  }
-  editDate(){
 
   }
   render() {
@@ -99,34 +114,36 @@ class App extends React.Component {
     return (
       <div>
         <header>
-          <div className="userInfo">
-            <button className="user"><i className="fas fa-user"></i></button>
-            <button>Login</button>
-          </div>
+          <UserLogin />
           <div className="title">
             <h1>28</h1>
             <h3>days</h3>
           </div>
-          <button onClick={this.showSidebar}>Get Cycle</button>
+          <div className="getCycle">
+            <button onClick={this.showSidebar}>Get Cycle</button>
+          </div>
         </header>
         <div className="wrapper">
           <main>
-            <div className="clock">
-            </div>
-            <section className="nextCycle">
-              {/* Here we display the new sates that I got from calculateDate */}
-              <div className ="displayCycle">
-                {/* <p>{this.state.next}</p> */}
-                {this.state.next.map((date, i) => {
-                  return (
-                    <div className ="oneCycle" key={`date-${i}`}>  
-                      <p className="daysTo">{moment(date).fromNow()}</p>
-                      <p>{this.state.next} <button className="edit"><i className="fas fa-pen-square"></i></button></p>
-                    </div>
-                  )
-                })}
+            {this.state.loggedIn ?
+              <div className="mainContent">
+                <section className="nextCycle">
+                  {/* Here we display the new sates that I got from calculateDate */}
+                  <div className="displayCycle">
+                    {/* <p>{this.state.next}</p> */}
+                    {this.state.next.map((date, i) => {
+                      return (
+                        <Cycle date={date} key={`date-${i}`}/>
+                      )
+                    })}
+                  </div>
+                </section>
               </div>
-            </section>
+              :
+              <div>
+                <h2>welcome</h2>
+              </div>
+            }
           </main>
           <aside className="sidebar" ref={ref => this.sidebar = ref}>
             <form id="mainForm" onSubmit={this.calculateDate}>
@@ -151,8 +168,6 @@ class App extends React.Component {
               </div>
               <input type="submit" value="calculate"/>
             </form>
-          </aside>
-          <aside className="userData">
           </aside>
         </div>
       </div>
