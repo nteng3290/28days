@@ -118,7 +118,7 @@ class App extends React.Component {
             <h1>28</h1>
             <h3>days</h3>
             <div className="infinityDesign">
-              <img src="../../assets/infinity.png" />
+              <img src="./assets/infinity.png" />
             </div>
           </div>
           <UserLogin />
@@ -151,7 +151,7 @@ class App extends React.Component {
                   <p>Create an account to get started!</p>
                 </div>
                 <div className="clock">
-                  <img src="../../assets/cycle.svg" />
+                  <img src="./assets/cycle.svg" />
                   <h2>{moment().format("LT")}</h2>
                 </div>
               </div>
