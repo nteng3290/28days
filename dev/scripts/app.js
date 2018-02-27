@@ -117,6 +117,9 @@ class App extends React.Component {
           <div className="title">
             <h1>28</h1>
             <h3>days</h3>
+            <div className="infinityDesign">
+              <img src="../../assets/infinity.png" />
+            </div>
           </div>
           <UserLogin />
         </header>
@@ -126,6 +129,7 @@ class App extends React.Component {
               <div className="mainContent">
                 <div className="getCycle">
                   <button onClick={this.showSidebar}>Get Cycle</button>
+                  <h3>{moment().format('llll')}</h3>
                 </div>
                 <section className="nextCycle">
                   {/* Here we display the new sates that I got from calculateDate */}
@@ -140,10 +144,16 @@ class App extends React.Component {
                 </section>
               </div>
               :
-              <div className="welcome">
-                <h2>w<span>e</span>lcom<span>e</span></h2>
-                <p><span className="logoNum">28</span><span className="logoDay">days</span> is a simple app that calcualte and monitors your next period cycle.</p>
-                <p>Create an account to get started!</p>
+              <div className="welcomePage">
+                <div className="welcome">
+                  <h2>w<span>e</span>lcom<span>e</span></h2>
+                  <p><span className="logoNum">28</span><span className="logoDay">days</span> is a simple app that calcualte and monitors your next period cycle.</p>
+                  <p>Create an account to get started!</p>
+                </div>
+                <div className="clock">
+                  <img src="../../assets/cycle.svg" />
+                  <h2>{moment().format("LT")}</h2>
+                </div>
               </div>
             }
           </main>

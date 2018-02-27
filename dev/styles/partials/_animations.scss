@@ -1,10 +1,8 @@
-@keyframes slideDown{
+@keyframes spin{
     0%{
-        display: none;
-        top:0;
+        transform: rotate(0deg)
     }
     100%{
-        display: block;
-        bottom:0;
+        transform: rotate(360deg)
     }
 }
