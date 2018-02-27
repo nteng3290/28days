@@ -3,19 +3,28 @@ header{
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    justify-content: space-around;
+    justify-content: space-between;
     height: 100px;
     padding: 20px 0;
     // position: relative;
 }
+.user{
+    float:right;
+    width: 10%;
+    margin-right: 40px;
+}
 .userSet{
-    width:40px;
+    // width:40px;
     border: 2px solid transparent;
+    .fa-user{
+        margin-right: 20px;
+    }
 }
 .title{
     width: 100px;
     height: 100px;
     position: relative;
+    margin-left: 40px;
 }
 h1{
     font-family: $headings;
@@ -28,24 +37,24 @@ h1{
     // display: block;
     position: absolute;
     // margin: 10px 0;
-    &::before,
-    &::after{
-        content: "";
-        display: block;
-        position: absolute;
-        width: 30px;
-        height:5px;
-        border-top: 2px solid black;
-        border-bottom: 2px solid black;   
-    }
-    &::before{
-        left:-50px;
-        top:50px;
-    }
-    &::after{
-        right:-50px;
-        top:50px;
-    }
+    // &::before,
+    // &::after{
+    //     content: "";
+    //     display: block;
+    //     position: absolute;
+    //     width: 30px;
+    //     height:5px;
+    //     border-top: 2px solid black;
+    //     border-bottom: 2px solid black;   
+    // }
+    // &::before{
+    //     left:-50px;
+    //     top:50px;
+    // }
+    // &::after{
+    //     right:-50px;
+    //     top:50px;
+    // }
 }
 h3{
     position: absolute;
@@ -60,55 +69,5 @@ h3{
     font-family: $headings;
 }
 
-.sidebar{
-    // display:none
-    // Just wondering why display none doesn't work? 
-    position: absolute;
-    top:-800px;
-    // bottom:0;
-    right: 0;
-    width: 33%;
-    height: calc(100vh - 100px);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: white;
-    border-left: 3px dotted $primary;
-    // background: linear-gradient(skyblue,hotpink);
-    animation: slideDown 1s ease;
-    transition: all 0.8s ease-in-out;
-    h2{
-        text-transform: capitalize;
-        font-size: 30px;
-        font-family: $headings;
-    }
-}
-.sidebar.show{
-    top:100px;
-    // bottom:0;
-}
-.dropDown{
-    position: absolute;
-    top:0px;
-    left:-300px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    height: 100px;
-    background: white;    
-    z-index: 5;
-    transition: all 0.5s ease-in-out;
-    @media (max-width: 1200px) {
-        top:100px;
-    }
-}
-.dropDown.show{
-    position: absolute;
-    // top:100px;
-    left:0px;
-    @media (max-width: 1200px) {
-        top:100px;
-    }
-}
+
+

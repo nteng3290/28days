@@ -114,19 +114,19 @@ class App extends React.Component {
     return (
       <div>
         <header>
-          <UserLogin />
           <div className="title">
             <h1>28</h1>
             <h3>days</h3>
           </div>
-          <div className="getCycle">
-            <button onClick={this.showSidebar}>Get Cycle</button>
-          </div>
+          <UserLogin />
         </header>
         <div className="wrapper">
           <main>
             {this.state.loggedIn ?
               <div className="mainContent">
+                <div className="getCycle">
+                  <button onClick={this.showSidebar}>Get Cycle</button>
+                </div>
                 <section className="nextCycle">
                   {/* Here we display the new sates that I got from calculateDate */}
                   <div className="displayCycle">
@@ -140,8 +140,10 @@ class App extends React.Component {
                 </section>
               </div>
               :
-              <div>
-                <h2>welcome</h2>
+              <div className="welcome">
+                <h2>w<span>e</span>lcom<span>e</span></h2>
+                <p><span className="logoNum">28</span><span className="logoDay">days</span> is a simple app that calcualte and monitors your next period cycle.</p>
+                <p>Create an account to get started!</p>
               </div>
             }
           </main>

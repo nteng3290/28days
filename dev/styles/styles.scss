@@ -1,4 +1,4 @@
-$primary: rgba(210,81,64,1);
+$primary: rgb(219, 40, 8);
 
 $headings: 'Amita', cursive;
 $text: 'Poppins', sans-serif;
@@ -6,6 +6,7 @@ $text: 'Poppins', sans-serif;
 @import 'partials/_setup.scss';
 @import 'partials/_button.scss';
 @import 'partials/_header.scss';
+@import 'partials/_sidebar.scss';
 @import 'partials/_userlogin.scss';
 @import 'partials/_main.scss';
 

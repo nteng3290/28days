@@ -109,19 +109,13 @@ class UserLogin extends React.Component {
     render(){
         return(
             <div className="user">
-                <div className="overlay" ref={ref => this.overlay = ref}></div>
-                <div className="userInfo">
-                    <button className="userSet" onClick={this.userSettings}><i className="fas fa-user"></i></button>
-                </div>
+                <div className="overlay" ref={ref => this.overlay = ref}></div>    
                 <div className="userDropdown">
                     {this.state.loggedIn ?
-                        <div className="dropDown" ref={ref => this.dropDown = ref}>
-                            <button className="signout" onClick={this.signOut}>Sign Out</button>
-                        </div>
+                        <button className="signout" onClick={this.signOut}>Sign Out</button>
                         :
-                        <div className="dropDown" ref={ref => this.dropDown = ref}>
-                            <button className="login" onClick={this.showLogin}>Login</button>
-                            <button className="createAccount" onClick={this.showCreate}>Create Account</button>
+                        <div className="userInfo">
+                            <button className="userSet" onClick={this.showLogin}><i className="fas fa-user"></i>Create User</button>
                         </div>
                     }
                 </div>         
@@ -142,6 +136,7 @@ class UserLogin extends React.Component {
                             <input type="submit" value="Login" />
                         </div>
                         <button id="loginGoogle" onClick={this.signInGoogle}><i className="fab fa-google"></i>Sign in with Google</button>
+                        <button className="createAccount" onClick={this.showCreate}>Create Account</button>
                     </form>
                 </div>
                 <div className="createUserModal modal" ref={ref => this.createUserModal = ref}>
