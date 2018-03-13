@@ -97,6 +97,9 @@ h2{
     @media (max-width: 768px) {
         flex-direction: column;
     }
+    @media (max-width: 480px) {
+        padding: 10px;
+    }
 }
 .nextCycle{
     width: 100%;
