@@ -129,8 +129,11 @@ h2{
             margin-bottom: 10px;
         }
         @media (max-width: 480px) {
-            width: 100%;
+            width: 95%;
             height: 350px;
+        }
+        @media (max-width: 400px) {
+            width: 90%;
         }
         .daysTo{
             font-size: 40px;
