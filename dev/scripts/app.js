@@ -1,8 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import moment from 'moment';
+import CountdownTimer from 'react-awesome-countdowntimer';
+import Clock from 'react-live-clock';
 import UserLogin from './UserLogin';
 import Cycle from './Cycle';
+import Record from './Record';
 
 const config = {
   apiKey: "AIzaSyCoBmsRR0XSxq84y722qifzhkXr9Umhzz4",
@@ -141,6 +144,7 @@ class App extends React.Component {
                       )
                     })}
                   </div>
+                  <Record />
                 </section>
               </div>
               :
@@ -152,7 +156,7 @@ class App extends React.Component {
                 </div>
                 <div className="clock">
                   <img src="./assets/cycle.svg" />
-                  <h2>{moment().format("LT")}</h2>
+                  <h2><Clock format={'HH:mm:ss'} ticking={true} timezone={""} /></h2>
                 </div>
               </div>
             }

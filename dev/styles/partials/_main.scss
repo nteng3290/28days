@@ -42,25 +42,31 @@ h2{
 .clock{
     width:45%;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     @media (max-width: 768px) {
         width: 60%;
     }
     img{
         position: absolute;
-        animation: rotate infinite;
+        top: 0;
+        animation: rotate 1s infinite;
         @media (max-width: 768px) {
             visibility: hidden;
         }
     }
     h2{
         position: absolute;
-        top: 181px;
-        left: 91px;
+        top: 180px;
         @media (max-width: 940px) {
+            top: 170px;
             font-size: 60px;
         }
         @media (max-width: 768px) {
             position: static;
+            align-self: flex-start;
         }
     }
 }
@@ -120,14 +126,18 @@ h2{
             margin-bottom: 10px;
         }
         .daysTo{
-            // font-family: $headings;
             font-size: 40px;
             text-transform: capitalize;
-
         }
         p{
             text-align: center;
         }
+    }
+}
+.section{
+    
+    &:nth-child(n+3){
+        display: none !important;
     }
 }
 .edit{

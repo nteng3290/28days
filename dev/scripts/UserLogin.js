@@ -11,6 +11,7 @@ class UserLogin extends React.Component {
         this.showCreate = this.showCreate.bind(this);
         this.createUser = this.createUser.bind(this);
         this.showLogin = this.showLogin.bind(this);
+        this.showLoginWithEmail = this.showLoginWithEmail.bind(this);
         this.loginUser = this.loginUser.bind(this);
         this.signOut = this.signOut.bind(this);
     }
@@ -65,10 +66,14 @@ class UserLogin extends React.Component {
         e.preventDefault();
         this.overlay.classList.toggle('show');
         this.loginModal.classList.toggle('show');
-        // this.userSettings(e);
+    }
+    showLoginWithEmail(e){
+        e.preventDefault(e);
+        this.overlay.classList.toggle('show');
+        this.emailLoginModal.classList.toggle('show');
     }
     loginUser(e){
-        e.preventDefault();
+        e.preventDefault(e);
         const email = this.userEmail.value;
         const password = this.userPassword.value;
         firebase.auth()
@@ -124,6 +129,16 @@ class UserLogin extends React.Component {
                         <i className="fa fa-times"></i>
                     </div>
                     <form action="" onSubmit={this.loginUser}>
+                        <button className="loginWithEmail" onClick={this.showLoginWithEmail}>Login with email</button>
+                        <button id="loginGoogle" onClick={this.signInGoogle}><i className="fab fa-google"></i>Sign in with Google</button>
+                        <button className="createAccount" onClick={this.showCreate}>Create Account</button>
+                    </form>
+                </div>
+                <div className="emailLoginModal modal" ref={ref => this.emailLoginModal = ref}>
+                    <div className="closeButton" onClick={this.showLoginWithEmail}>
+                        <i className="fa fa-times"></i>
+                    </div>
+                    <form action="" onSubmit={this.loginUser}>
                         <div>
                             <label htmlFor="email">Email:</label>
                             <input type="text" name="email" ref={ref => this.userEmail = ref} />
@@ -135,8 +150,6 @@ class UserLogin extends React.Component {
                         <div>
                             <input type="submit" value="Login" />
                         </div>
-                        <button id="loginGoogle" onClick={this.signInGoogle}><i className="fab fa-google"></i>Sign in with Google</button>
-                        <button className="createAccount" onClick={this.showCreate}>Create Account</button>
                     </form>
                 </div>
                 <div className="createUserModal modal" ref={ref => this.createUserModal = ref}>
