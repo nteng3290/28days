@@ -162,9 +162,10 @@ header {
   padding: 20px 0; }
 
 .user {
-  float: right;
-  width: 10%;
   margin-right: 40px; }
+  @media (max-width: 480px) {
+    .user {
+      margin-right: 20px; } }
 
 .userSet {
   border: 2px solid transparent; }
@@ -246,6 +247,9 @@ header {
   align-items: center;
   justify-content: center;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.5); }
+  @media (max-width: 480px) {
+    .modal {
+      width: 80%; } }
   .modal input,
   .modal button {
     width: 100%;
@@ -253,6 +257,10 @@ header {
     margin-bottom: 15px;
     border: none;
     border-bottom: 2px dotted #db2808; }
+    @media (max-width: 480px) {
+      .modal input,
+      .modal button {
+        width: 90%; } }
   .modal input[type=submit],
   .modal button {
     background: #db2808;
@@ -362,6 +370,9 @@ h2 {
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between; }
+  @media (max-width: 768px) {
+    .getCycle {
+      flex-direction: column; } }
 
 .nextCycle {
   width: 100%;
@@ -391,6 +402,10 @@ h2 {
         width: 53%;
         height: 400px;
         margin-bottom: 10px; } }
+    @media (max-width: 480px) {
+      .nextCycle .oneCycle {
+        width: 100%;
+        height: 350px; } }
     .nextCycle .oneCycle .daysTo {
       font-size: 40px;
       text-transform: capitalize; }

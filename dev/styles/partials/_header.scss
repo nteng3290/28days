@@ -9,9 +9,12 @@ header{
     // position: relative;
 }
 .user{
-    float:right;
-    width: 10%;
+    // float:right;
+    // width: 10%;
     margin-right: 40px;
+    @media (max-width: 480px) {
+        margin-right: 20px;
+    }
 }
 .userSet{
     // width:40px;

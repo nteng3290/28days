@@ -25,6 +25,9 @@
     align-items:center;
     justify-content: center;
     box-shadow: 0 0 3px rgba(0,0,0,0.5);
+    @media (max-width: 480px) {
+        width: 80%;
+    }
     input,
     button{
         width: 100%;
@@ -32,6 +35,9 @@
         margin-bottom: 15px;
         border: none;
         border-bottom: 2px dotted $primary;
+        @media (max-width: 480px) {
+            width: 90%;
+        }
     }
     input[type=submit],
     button{

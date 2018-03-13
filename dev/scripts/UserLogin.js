@@ -69,7 +69,6 @@ class UserLogin extends React.Component {
     }
     showLoginWithEmail(e){
         e.preventDefault(e);
-        this.overlay.classList.toggle('show');
         this.emailLoginModal.classList.toggle('show');
     }
     loginUser(e){
@@ -148,7 +147,7 @@ class UserLogin extends React.Component {
                             <input type="password" name="password" ref={ref => this.userPassword = ref} />
                         </div>
                         <div>
-                            <input type="submit" value="Login" />
+                            <input type="submit" value="Login" onClick={this.showLoginEmail}/>
                         </div>
                     </form>
                 </div>

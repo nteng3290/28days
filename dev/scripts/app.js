@@ -5,7 +5,6 @@ import CountdownTimer from 'react-awesome-countdowntimer';
 import Clock from 'react-live-clock';
 import UserLogin from './UserLogin';
 import Cycle from './Cycle';
-import Record from './Record';
 
 const config = {
   apiKey: "AIzaSyCoBmsRR0XSxq84y722qifzhkXr9Umhzz4",
@@ -144,7 +143,6 @@ class App extends React.Component {
                       )
                     })}
                   </div>
-                  <Record />
                 </section>
               </div>
               :
