@@ -380,6 +380,9 @@ h2 {
 .nextCycle {
   width: 100%;
   margin: 40px 0; }
+  @media (max-width: 480px) {
+    .nextCycle {
+      margin: 0; } }
   .nextCycle .displayCycle {
     display: flex;
     flex-direction: row;
@@ -408,11 +411,11 @@ h2 {
     @media (max-width: 480px) {
       .nextCycle .oneCycle {
         width: 90%;
-        height: 350px;
+        height: 380px;
         margin: 50px 0; } }
     @media (max-width: 400px) {
       .nextCycle .oneCycle {
-        height: 330px; } }
+        height: 280px; } }
     .nextCycle .oneCycle .daysTo {
       font-size: 40px;
       text-transform: capitalize; }
